@@ -1,0 +1,44 @@
+import express from 'express';
+const app = express();
+import mongoose from 'mongoose';
+import {config} from 'dotenv';
+import routerBrother from '../api/routes/brothers.js';
+const brotherRoutes = routerBrother;
+import routerPolls from '../api/routes/polls.js';
+const pollsRoutes = routerPolls;
+import routerLogins from '../api/routes/logins.js';
+const loginRoutes = routerLogins;
+
+config();
+
+//middleware for parsing json
+/*app.use('/brothers', brotherRoutes);
+app.use('/polls', pollsRoutes);
+app.use('/logins', loginRoutes);*/
+
+//connect to MongoDB
+mongoose.connect(process.env.DB_URI).then(result => {
+    console.log("MongoDB connected!");
+}).catch(err=>{
+    console.log("MongoDB conenction failed. Please ensure service is running and API key is correct.");
+    return;
+});
+
+//error handling for wrong routes
+app.use((req, res, next) => {
+    const error = new Error('not found!');
+    error.status = 404;
+    next(error);
+})
+//other errors redir here
+app.use((error, req, res, next) => {
+    res.status(error.status || 500);
+    res.json({
+        error: {
+            //whatever the error is, print error (auto throwing)
+            message: error.message
+        }
+    })
+})
+
+export { app };

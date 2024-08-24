@@ -1,0 +1,12 @@
+.crest {
+    height: auto;
+    width: 420px;
+    text-align: center;
+    color: #ffffff;
+    bottom: 10px;
+    position: absolute;
+  }
+
+.img {
+    width: 25%;
+}
