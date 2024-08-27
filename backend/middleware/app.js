@@ -1,7 +1,8 @@
 import express from 'express';
 const app = express();
 import mongoose from 'mongoose';
-import {config} from 'dotenv';
+import { config } from 'dotenv';
+const test = config();
 import routerBrother from '../api/routes/brothers.js';
 const brotherRoutes = routerBrother;
 import routerPolls from '../api/routes/polls.js';
@@ -9,7 +10,6 @@ const pollsRoutes = routerPolls;
 import routerLogins from '../api/routes/logins.js';
 const loginRoutes = routerLogins;
 
-config();
 
 //middleware for parsing json
 /*app.use('/brothers', brotherRoutes);
@@ -20,7 +20,8 @@ app.use('/logins', loginRoutes);*/
 mongoose.connect(process.env.DB_URI).then(result => {
     console.log("MongoDB connected!");
 }).catch(err=>{
-    console.log("MongoDB conenction failed. Please ensure service is running and API key is correct.");
+    console.log(test);
+    console.log("MongoDB connection failed. Please ensure service is running and API key is correct. \n" + err);
     return;
 });
 
