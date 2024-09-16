@@ -3,7 +3,7 @@ const app = express();
 import mongoose from 'mongoose';
 import { config } from 'dotenv';
 const test = config();
-import routerBrother from '../api/routes/brothers.js';
+import { routerBrother } from '../api/routes/brothers.js';
 const brotherRoutes = routerBrother;
 import routerPolls from '../api/routes/polls.js';
 const pollsRoutes = routerPolls;
@@ -12,8 +12,8 @@ const loginRoutes = routerLogins;
 
 
 //middleware for parsing json
-/*app.use('/brothers', brotherRoutes);
-app.use('/polls', pollsRoutes);
+app.use('/brothers', brotherRoutes);
+/*app.use('/polls', pollsRoutes);
 app.use('/logins', loginRoutes);*/
 
 //connect to MongoDB
@@ -27,7 +27,7 @@ mongoose.connect(process.env.DB_URI).then(result => {
 
 //error handling for wrong routes
 app.use((req, res, next) => {
-    const error = new Error('not found!');
+    const error = new Error('Route not found!');
     error.status = 404;
     next(error);
 })

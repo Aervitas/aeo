@@ -10,6 +10,12 @@ config();
 import { brotherModel } from '../models/brother.js';
 const Brother = brotherModel;
 
+router.post('/login', (req,res,next) => {
+    return res.status(400).json({
+        message: 'Hi'
+    })
+})
+
 router.post('/signup', authenticator, (req, res, next) => {
     /*request format:
     {
@@ -110,4 +116,4 @@ router.get('/login', (req, res, next) => {
 })
 
 const routerBrother = router;
-export default { routerBrother };
+export { routerBrother };

@@ -5,16 +5,22 @@
   "description": "for beta website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run setenv && npm run dev",
+    "dev": "nodemon ./src/server.js",
+    "setenv": "node setenv.js"
   },
   "author": "Matthew Keshishian",
   "license": "ISC",
   "dependencies": {
+    "aeo": "file:",
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.8.0",
-    "mongoose": "^8.5.4"
+    "mongoose": "^8.5.4",
+    "nodemon": "^3.1.4",
+    "readline-sync": "^1.4.10"
   }
 }
