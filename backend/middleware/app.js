@@ -9,8 +9,14 @@ import routerPolls from '../api/routes/polls.js';
 const pollsRoutes = routerPolls;
 import routerLogins from '../api/routes/logins.js';
 const loginRoutes = routerLogins;
+import bodyParser from 'body-parser';
+import cors from 'cors';
 
-
+app.use(cors({
+    origin: '*'
+}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 //middleware for parsing json
 app.use('/brothers', brotherRoutes);
 /*app.use('/polls', pollsRoutes);

@@ -10,12 +10,6 @@ config();
 import { brotherModel } from '../models/brother.js';
 const Brother = brotherModel;
 
-router.post('/login', (req,res,next) => {
-    return res.status(400).json({
-        message: 'Hi'
-    })
-})
-
 router.post('/signup', authenticator, (req, res, next) => {
     /*request format:
     {
@@ -25,7 +19,7 @@ router.post('/signup', authenticator, (req, res, next) => {
     }*/
 
    //make sure logged in user is an admin 
-   let adminId = req.query._id;
+   let adminId = req.user._id;
    User.findOne({_id: adminId}).exec().then(currentUser => {
        if(!currentUser.admin){
            return res.status(401).json({
@@ -71,16 +65,16 @@ router.post('/signup', authenticator, (req, res, next) => {
         });
 });
 
-router.get('/login', (req, res, next) => {
+router.post('/login', (req, res, next) => {
     /*request format:
     {
         email: string,
         password: string,
         rememberMe: boolean
     }*/
-   const expiresIn = '1h';
-   if (req.body.rememberMe) {
-        //expiresIn = '14d';
+   let expiresIn = '1h';
+   if (req.body?.rememberMe) {
+        expiresIn = '14d';
    }
     Brother.find({ email: req.body.email}).exec().then(brother => {
         if (brother.length < 1) {
