@@ -4,7 +4,7 @@
     text-align: center;
     color: #ffffff;
     bottom: 10px;
-    position: absolute;
+    position: fixed;
   }
 
 .img {

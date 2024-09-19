@@ -2,6 +2,8 @@ import React from 'react';
 import './LoginPage.css';
 import { FaUserAlt } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../components/AuthContext';
 
 
 const LoginPage = () => {
@@ -9,10 +11,13 @@ const LoginPage = () => {
     const [password, setPassword] = React.useState('');
     const [rememberMe, setRememberMe] = React.useState(false);
     const [errorMessage, setErrorMesssage] = React.useState('');
+    const [fadeOut, setFadeOut] = React.useState(false);
+    const navigate = useNavigate();
+    const { login } = useAuth();
 
     const loginClick = async (e) => {
         e.preventDefault();
-        const checkbox = document.getElementById('rememberMe');
+        const rememberMe = document.getElementById('rememberMe');
         const response = await fetch('http://localhost:3001/brothers/login', {
             method: 'POST',
             headers: {
@@ -25,16 +30,20 @@ const LoginPage = () => {
             })
         });
         if (response.ok) {
-            alert('Login successful');
+            //alert('Login successful');
             const data = await response.json();
-            localStorage.setItem('token', data.token);
-            localStorage.setItem('userId', data.userId);
+            login(data.token, data.userId, data.roles, data.admin);
+            setFadeOut(true);
+            
+            setTimeout(() => {
+                navigate('/home');
+            }, 1000);
         } else {
             setErrorMesssage('Login failed. Contact admin if you need a new login.');
     }
     }
     return (
-        <div className='wrapper'>
+        <div className={`wrapper ${fadeOut ? 'fade-out-hidden' : 'fade-out'}`}>
             <form onSubmit={loginClick}>
 
                 <h1>Brother Database</h1>

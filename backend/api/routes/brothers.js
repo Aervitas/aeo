@@ -90,7 +90,6 @@ router.post('/login', (req, res, next) => {
             }
             if (result) {
                 const token = jwt.sign({
-                    email: brother[0].email,
                     userId: brother[0]._id,
                     roles: brother[0].roles,
                     admin: brother[0].admin
@@ -99,7 +98,10 @@ router.post('/login', (req, res, next) => {
                 });
                 return res.status(200).json({
                     message: 'Authorization successful',
-                    token: token
+                    token: token,
+                    userId: brother[0]._id,
+                    roles: brother[0].roles,
+                    admin: brother[0].admin
                 });
             }
             res.status(401).json({
@@ -107,6 +109,14 @@ router.post('/login', (req, res, next) => {
             });
         });
     })
+})
+
+router.post("/logout", authenticator, (req, res, next) => {
+    const refreshToken = req.body.token;
+    refreshTokens = refreshTokens.filter(token !== refreshToken);
+    res.status(200).json({
+        message: 'Logged out.'
+    });
 })
 
 const routerBrother = router;
