@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../components/AuthContext';
 
-export default function Main() {
+const AuthRedirect = () => {
     const navigate = useNavigate();
     const { authToken } = useAuth();
 
@@ -18,7 +18,7 @@ export default function Main() {
                 });
                 console.log(response);
                 if (response.ok) {
-                    navigate('/home');
+                    console.log('Authorized!');
                 }
                 else {
                     navigate('/login');
@@ -27,4 +27,8 @@ export default function Main() {
             checkAuth();
         } 
     }, [authToken, navigate]);
+
+    return null;
 }
+
+export default AuthRedirect;

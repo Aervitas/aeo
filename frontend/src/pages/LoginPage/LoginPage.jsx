@@ -34,6 +34,7 @@ const LoginPage = () => {
                 }
             };
             checkAuth();
+            console.log("pass");
         }
     }, [authToken, navigate]);
 
@@ -67,7 +68,6 @@ const LoginPage = () => {
     return (
         <div className={`wrapper ${fadeOut ? 'fade-out-hidden' : 'fade-out'}`}>
             <form onSubmit={loginClick}>
-
                 <h1>Brother Database</h1>
                 <div className='input-field'>
                     <input type="text" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} required/>

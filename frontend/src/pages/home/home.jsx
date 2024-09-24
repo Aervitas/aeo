@@ -1,4 +1,5 @@
 import React from 'react';
+import AuthRedirect from '../../components/AuthRedirect';
 import './home.css';
 
 const Home = () => {
@@ -12,9 +13,22 @@ const Home = () => {
     return () => clearTimeout(timeOut);
     }, []);
     return (
-        <div className={`fade-in ${fadeIn ? 'fade-in-visible' : 'fade-in'}`}>
+        
+        <div className={`homewrapper ${fadeIn ? 'fade-in-visible' : 'fade-in'}`}>
+            <AuthRedirect/>
             <h1>Home</h1>
-            <button>HOME</button>
+            <div class="container">
+                <div class="column">
+                    <button>Alumni DB</button>
+                </div>
+                <div class="column">
+                    <button>Logins</button>
+                </div>
+                <div class="column">
+                    <button>Polls</button>
+                </div>
+            </div>
+
         </div>
     );
 }
