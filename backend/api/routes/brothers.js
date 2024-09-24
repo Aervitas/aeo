@@ -119,5 +119,11 @@ router.post("/logout", authenticator, (req, res, next) => {
     });
 })
 
+router.post("/checkAuth", authenticator, (req, res, next) => {
+    res.status(200).json({
+        message: 'Authorized'
+    });
+})
+
 const routerBrother = router;
 export { routerBrother };

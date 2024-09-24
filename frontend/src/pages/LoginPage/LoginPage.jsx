@@ -10,10 +10,32 @@ const LoginPage = () => {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [rememberMe, setRememberMe] = React.useState(false);
-    const [errorMessage, setErrorMesssage] = React.useState('');
+    const [errorMessage, setErrorMessage] = React.useState('');
     const [fadeOut, setFadeOut] = React.useState(false);
     const navigate = useNavigate();
-    const { login } = useAuth();
+    const { login, authToken } = useAuth();
+
+    React.useEffect(() => {
+        if (authToken) {
+            const checkAuth = async () => {
+                const response = await fetch('http://localhost:3001/brothers/checkAuth', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                });
+                console.log(response);
+                if (response.ok) {
+                    setFadeOut(true);
+                    setTimeout(() => {
+                        navigate('/home');
+                    }, 1000);
+                }
+            };
+            checkAuth();
+        }
+    }, [authToken, navigate]);
 
     const loginClick = async (e) => {
         e.preventDefault();
@@ -39,7 +61,7 @@ const LoginPage = () => {
                 navigate('/home');
             }, 1000);
         } else {
-            setErrorMesssage('Login failed. Contact admin if you need a new login.');
+            setErrorMessage('Login failed. Contact admin if you need a new login.');
     }
     }
     return (
