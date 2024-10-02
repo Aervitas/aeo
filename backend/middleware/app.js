@@ -5,7 +5,7 @@ import { config } from 'dotenv';
 const test = config();
 import { routerBrother } from '../api/routes/brothers.js';
 const brotherRoutes = routerBrother;
-import routerPolls from '../api/routes/polls.js';
+import { routerPolls } from '../api/routes/polls.js';
 const pollsRoutes = routerPolls;
 import routerLogins from '../api/routes/logins.js';
 const loginRoutes = routerLogins;
@@ -19,8 +19,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 //middleware for parsing json
 app.use('/brothers', brotherRoutes);
-/*app.use('/polls', pollsRoutes);
-app.use('/logins', loginRoutes);*/
+app.use('/polls', pollsRoutes);
+/*app.use('/logins', loginRoutes);*/
 
 //connect to MongoDB
 mongoose.connect(process.env.DB_URI).then(result => {

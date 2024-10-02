@@ -9,16 +9,19 @@ export const AuthProvider = ({ children }) => {
     const [userId, setUserId] = React.useState(null);
     const [roles, setRoles] = React.useState(null);
     const [admin, setAdmin] = React.useState(null);
+    const [name, setName] = React.useState(null);
 
     React.useEffect(() => {
         const token = localStorage.getItem('authToken');
         const userId = localStorage.getItem('userId');
         const roles = localStorage.getItem('roles');
         const admin = localStorage.getItem('admin');
+        const name = localStorage.getItem('name');
         if (token) setAuthToken(token);
         if (userId) setUserId(userId);
         if (roles) setRoles(roles);
         if (admin) setAdmin(admin);
+        if (name) setName(name);
     }, []);
 
 
@@ -27,10 +30,12 @@ const login = (token, userId, roles, admin) => {
     setUserId(userId);
     setRoles(roles);
     setAdmin(admin);
+    setName(name);
     localStorage.setItem('authToken', token);
     localStorage.setItem('userId', userId);
     localStorage.setItem('roles', roles);
     localStorage.setItem('admin', admin);
+    localStorage.setItem('name', name);
 };
 
 const logout = () => {
@@ -38,10 +43,12 @@ const logout = () => {
     setUserId(null);
     setRoles(null);
     setAdmin(null);
+    setName(null);
     localStorage.removeItem('authToken');
     localStorage.removeItem('userId');
     localStorage.removeItem('roles');
     localStorage.removeItem('admin');
+    localStorage.removeItem('name');
 };
 
 const value = {
@@ -49,6 +56,7 @@ const value = {
     userId,
     roles,
     admin,
+    name,
     login,
     logout
 };

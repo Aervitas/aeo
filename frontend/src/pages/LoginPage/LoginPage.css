@@ -1,9 +1,14 @@
 .wrapper {
-    width: 420px;
     background: rgba(140, 0, 255, .85);
     color: #ffffff;
     border-radius: 10px;
     padding: 30px 40px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 50vh;
 }
 
 .wrapper h1 {
@@ -89,3 +94,11 @@
     opacity: 0;
     transition: opacity 1s ease-out;
   }
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}

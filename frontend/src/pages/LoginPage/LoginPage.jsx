@@ -83,6 +83,8 @@ const LoginPage = () => {
                 </div>
 
                 <button type='submit'>Login</button>
+
+                {errorMessage && <p className='error-message'>{errorMessage}</p>}
             </form>
         </div>
     
