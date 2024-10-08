@@ -4,11 +4,13 @@
     "npm-run-all": "^4.1.5"
   },
   "scripts": {
-    "start": "npm install && npm-run-all -s install StartServer StartClient",
+    "start": "npm install && npm-run-all -s install setEnv startBoth",
     "install": "npm-run-all -p installClient installServer",
     "installClient": "cd frontend && npm install",
     "installServer": "cd backend && npm install",
-    "start-server": "cd backend && npm start",
-    "start-client": "cd frontend && npm start"
+    "setEnv": "cd backend && npm run setenv",
+    "startBoth": "npm-run-all -p startServer startClient",
+    "startServer": "cd backend && npm start",
+    "startClient": "cd frontend && npm start"
   }
 }
