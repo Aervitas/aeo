@@ -18,11 +18,11 @@ const LoginPage = () => {
     React.useEffect(() => {
         if (authToken) {
             const checkAuth = async () => {
-                const response = await fetch('http://localhost:3001/brothers/checkAuth', {
+                const response = await fetch('http://localhost:8000/api/checkAuth/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${authToken}`
+                        'Authorization': `Token ${authToken}`
                     },
                 });
                 console.log(response);
@@ -41,21 +41,20 @@ const LoginPage = () => {
     const loginClick = async (e) => {
         e.preventDefault();
         const rememberMe = document.getElementById('rememberMe');
-        const response = await fetch('http://localhost:3001/brothers/login', {
+        const response = await fetch('http://localhost:8000/api/login/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email: email,
+                username: email,
                 password: password,
-                rememberMe: rememberMe
             })
         });
         if (response.ok) {
             //alert('Login successful');
             const data = await response.json();
-            login(data.token, data.userId, data.roles, data.admin);
+            login(data.token);
             setFadeOut(true);
             
             setTimeout(() => {

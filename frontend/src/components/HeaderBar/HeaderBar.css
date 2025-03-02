@@ -3,9 +3,10 @@ nav {
     justify-content: space-between;
     align-items: center;
     background-color: #0f172a;
-    position: sticky;
+    position: fixed;
     top: 0;
     width: 100%;
+    
 }
 
 nav .title {

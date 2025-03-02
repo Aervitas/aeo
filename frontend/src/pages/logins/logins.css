@@ -23,6 +23,8 @@
     flex-direction: row; /* or column */
     justify-content: center;
     width: 100%;
+    height: auto;
+    min-height: 70vh;
   }
   
   .cal {
@@ -32,3 +34,43 @@
     width: 100%;           /* important: let it fill the container */
     padding: 10px;
   }
+
+  .login-list-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    background: rgba(140, 0, 255, 0.85);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 15px;
+}
+
+.login-list {
+    max-height: 300px; /* Adjust height as needed */
+    overflow-y: auto; /* Enables scrolling */
+    padding: 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+
+.login-item {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.login-item h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.login-item p {
+    margin: 5px 0;
+    font-size: 14px;
+}

@@ -7,54 +7,49 @@ import './home.css';
 
 const Home = () => {
     const [fadeIn, setFadeIn] = React.useState(false);
+    const [eventList, setEventList] = React.useState([]);
 
+    const token = localStorage.getItem('token');
     React.useEffect(() => {
         const timeOut = setTimeout(() => {
             setFadeIn(true);
         }, 100);
-    return () => clearTimeout(timeOut);
+        
+        const fetchEvents = async () => {
+            try {
+              const response = await fetch('http://localhost:8000/api/events/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Token ${token}`
+                },
+              });
+              if (!response.ok) {
+                console.error("Error fetching events:", data.statusText);
+                return;
+              }
+              const data = await response.json();
+
+              const transformedEvents = data.map(event => ({
+                title: event.title,
+                start: new Date(event.start),  // Converts ISO string to JS Date object (optional)
+                end: new Date(event.end),
+                allDay: event.allDay,         // Or, if needed: event.all_day === true
+              }));
+              setEventList(transformedEvents);
+              console.log(eventList);
+            } catch (error) {
+              console.error("Error fetching events:", error);
+            }
+          };
+
+          fetchEvents();
+
+        return () => clearTimeout(timeOut);
     }, []);
 
     
     
-    const eventList = [
-        {
-            title: 'Rush Week',
-            start: new Date(2024, 9, 7),
-            end: new Date(2024, 9, 12),
-            allDay: "true"
-        },
-        {
-            title: 'Brother BBQ',
-            start: new Date(2024, 9, 7, 19, 0),
-            end: new Date(2024, 9, 7, 21, 0)
-        },
-        {
-            title: 'AGA Picnic',
-            start: new Date(2024, 9, 8, 18, 0),
-            end: new Date(2024, 9, 8, 21, 0)
-        },
-        {
-            title: 'Brother Meeting',
-            start: new Date(2024, 9, 8, 20, 0),
-            end: new Date(2024, 9, 8, 21, 0)
-        },
-        {
-            title: 'Beach Bonfire',
-            start: new Date(2024, 9, 10, 19, 0),
-            end: new Date(2024, 9, 10, 21, 0)
-        },
-        {
-            title: 'Bid Event',
-            start: new Date(2024, 9, 11, 19, 0),
-            end: new Date(2024, 9, 11, 21, 0)
-        },
-        {
-            title: 'Y2K',
-            start: new Date(2024, 9, 12, 22, 0),
-            end: new Date(2024, 9, 13, 2, 0)
-        }
-    ];
 
     return (
         
@@ -70,7 +65,9 @@ const Home = () => {
                     center: 'title',
                     end: "dayGridMonth,timeGridWeek,timeGridDay",
                 }}
-                height={'70vh'}
+                allDaySlot={'true'}
+                height={'80vh'}
+                
                 events={eventList}
                 />
                 </div>

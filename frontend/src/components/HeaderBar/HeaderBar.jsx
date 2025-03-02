@@ -25,7 +25,7 @@ export const HeaderBar = () => {
                 <NavLink to="/alum">Alumni</NavLink>
             </li>
             <li>
-                <NavLink to="/logins">Logins</NavLink>
+                <NavLink to="/brotherLogins">Logins</NavLink>
             </li>
             <li>
                 <NavLink to="/polls">Polls</NavLink>
