@@ -11,24 +11,57 @@
 
 
   .homewrapper {
-    min-width: 60vw;
-    min-height: 80vh;
+    width: 90%;
     background: rgba(140, 0, 255, .85);
     color: #ffffff;
     border-radius: 10px;
     padding: 30px 40px;
-    justify-content: center;
-}
-
+  }
+  
   .container {
     display: flex;
-    flex-direction: center;
+    flex-direction: row; /* or column */
     justify-content: center;
+    width: 100%;
+  }
+  
+  .cal {
+    display: block;
+    flex-direction: column; /* so the calendar can stack below any other elements if needed */
+    align-items: center;    /* center it if you want */
+    width: 100%;           /* important: let it fill the container */
+    padding: 10px;
+    overflow-x: auto;
+    font-size: 1rem;
   }
 
-  .cal {
-    padding: 10px;
-    display: flex;
-    flex-direction: center;
-    justify-content: center;
+  .fc .fc-toolbar .fc-button {
+    font-size: 1rem; /* e.g., 16px */
+    
+  }
+  
+  .fc .fc-toolbar-title {
+    font-size: 1.25rem; /* e.g., 20px */
+  }
+
+  @media (max-width: 600px) {
+    .fc .fc-toolbar .fc-button {
+      font-size: 0.9rem; 
+    }
+    
+    .fc .fc-toolbar-title {
+      font-size: 1rem; 
+    }
+  }
+  
+  /* Even smaller screens */
+  @media (max-width: 400px) {
+    .fc .fc-toolbar .fc-button {
+      font-size: 0.8rem; 
+      
+    }
+    
+    .fc .fc-toolbar-title {
+      font-size: 1.2rem;
+    }
   }

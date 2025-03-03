@@ -3,9 +3,10 @@ import Crest from './components/crest/Crest';
 import Home from './pages/home/home';
 import Main from './pages/main';
 import './App.css';
-import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import { AuthProvider } from './components/AuthContext';
+import { BrowserRouter as Router, Route, Routes, Navigate} from "react-router-dom";
+import { AuthProvider, useAuth } from './components/AuthContext';
 import {HeaderBar} from './components/HeaderBar/HeaderBar';
+import Logins from './pages/logins/logins';
 
 function App() {
 
@@ -16,15 +17,16 @@ function App() {
           <HeaderBar/>
           <div className="content">
             <Routes>
-              <Route exact path="/" element={ <Main />} />
+              <Route path="/" element={<Navigate to="/login" replace />} />
               <Route exact path="/login" element={
                 <>
                   <LoginPage></LoginPage>
                 </>
               } />
+
               <Route exact path="/home" element={<Home />} />   
+              <Route exact path="/brotherLogins" element={<Logins />} />
             </Routes>
-            <Crest></Crest>
           </div>
         </div>
       

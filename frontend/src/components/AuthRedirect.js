@@ -4,29 +4,34 @@ import { useAuth } from '../components/AuthContext';
 
 const AuthRedirect = () => {
     const navigate = useNavigate();
-    const { authToken } = useAuth();
+    const { token } = useAuth();
 
     React.useEffect(() => {
-        if (authToken) {
-            const checkAuth = async () => {
-                const response = await fetch('http://localhost:3001/brothers/checkAuth', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${authToken}`
-                    },
-                });
-                console.log(response);
-                if (response.ok) {
-                    console.log('Authorized!');
-                }
-                else {
-                    navigate('/login');
-                }
-            };
-            checkAuth();
-        } 
-    }, [authToken, navigate]);
+        if (!token) {
+            console.log("No token found, redirecting to login.");
+            navigate('/login');
+            return;
+        }
+        const checkAuth = async () => {
+
+            const response = await fetch('http://localhost:8000/api/checkAuth/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Token ${token}`,
+                },
+            });
+            console.log(response);
+            if (response.ok) {
+                console.log('Authorized!');
+            }
+            else {
+                console.log('Not Authorized');
+                navigate('/login');
+            }
+        };
+        checkAuth(); 
+    }, [token, navigate]);
 
     return null;
 }

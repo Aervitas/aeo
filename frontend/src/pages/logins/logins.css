@@ -1,0 +1,110 @@
+
+.fade-in {
+    opacity: 0;                /* Start hidden */
+    transition: opacity 1s ease-in; /* Transition for 0.5 seconds */
+  }
+  
+  .fade-in-visible {
+    opacity: 1;                /* Fade in to fully visible */
+    transition: opacity 1s ease-in;
+  }
+
+
+  .homewrapper {
+    width: 90%;
+    background: rgba(140, 0, 255, .85);
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 30px 40px;
+    max-width: 1000px;
+
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column; /* or column */
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    min-height: 70vh;
+    max-height: 80vh;
+    
+  }
+  
+  .cal {
+    display: block;
+    flex-direction: column; 
+    align-items: center;   
+    width: 100%;          
+    padding: 10px;
+  }
+
+  .login-list-container {
+    width: 80%;
+    overflow-y: auto;
+    max-width: 600px;
+    margin: 10px auto;
+    background: rgba(140, 0, 255, 0.85);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    
+}
+
+h2 {
+    margin-bottom: 15px;
+}
+
+.login-list {
+    max-height: 100%; /* Adjust height as needed */
+    overflow-y: auto; /* Enables scrolling */
+    padding: 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+
+.login-item {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.login-item h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.login-item p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+@media (max-width: 950px) {
+  .homewrapper {
+      background: rgba(140, 0, 255, .85);
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 10px 10px;
+      width: 95%;
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+  }
+  
+  .login-list-container {
+    width: 95%;
+    overflow-y: auto;
+    max-width: 600px;
+    margin: 10px auto;
+    background: rgba(140, 0, 255, 0.85);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    
+}
+}

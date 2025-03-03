@@ -13,16 +13,16 @@ const LoginPage = () => {
     const [errorMessage, setErrorMessage] = React.useState('');
     const [fadeOut, setFadeOut] = React.useState(false);
     const navigate = useNavigate();
-    const { login, authToken } = useAuth();
+    const { login, token } = useAuth();
 
     React.useEffect(() => {
-        if (authToken) {
+        if (token) {
             const checkAuth = async () => {
-                const response = await fetch('http://localhost:3001/brothers/checkAuth', {
-                    method: 'POST',
+                const response = await fetch('http://localhost:8000/api/checkAuth/', {
+                    method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${authToken}`
+                        'Authorization': `Token ${token}`
                     },
                 });
                 console.log(response);
@@ -36,26 +36,25 @@ const LoginPage = () => {
             checkAuth();
             console.log("pass");
         }
-    }, [authToken, navigate]);
+    }, [token, navigate]);
 
     const loginClick = async (e) => {
         e.preventDefault();
         const rememberMe = document.getElementById('rememberMe');
-        const response = await fetch('http://localhost:3001/brothers/login', {
+        const response = await fetch('http://localhost:8000/api/login/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email: email,
+                username: email,
                 password: password,
-                rememberMe: rememberMe
             })
         });
         if (response.ok) {
             //alert('Login successful');
             const data = await response.json();
-            login(data.token, data.userId, data.roles, data.admin);
+            login(data.token);
             setFadeOut(true);
             
             setTimeout(() => {
