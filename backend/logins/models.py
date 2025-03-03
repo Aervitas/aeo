@@ -35,3 +35,10 @@ class Choice(models.Model):
 
     def __str__(self):
         return f"{self.choice_text} ({self.vote_count} votes)"
+
+class GmailToken(models.Model):
+    access_token = models.CharField(max_length=512)
+    refresh_token = models.CharField(max_length=512)
+
+    def __str__(self):
+        return f"GmailToken for Client: {self.client_id}"
