@@ -8,7 +8,6 @@ const Logins = () => {
     const [logins, setLogins] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(null);
-    const [otp, setOtp] = React.useState(null);
     
     React.useEffect(() => {
         const timeOut = setTimeout(() => {
@@ -18,13 +17,13 @@ const Logins = () => {
         const fetchLogins = async () => {
             const token = localStorage.getItem('token');
             try{
-                const response = await fetch("http://localhost:8000/api/brotherLogins/", {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Token ${token}`
-                    }
-                });
+            const response = await fetch("http://localhost:8000/api/brotherLogins/", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Token ${token}`
+                }
+            });
             if (response.ok) {
                 const data = await response.json();
                 setLogins(data);
@@ -37,29 +36,8 @@ const Logins = () => {
                 setLoading(false);
             }
         };
-        
-        const fetchOTP = async() => {
-            const token = localStorage.getItem('token');
-            try {
-                const response = await fetch("http://localhost:8000/api/login/getOTP", {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Token ${token}`
-                    }
-                });
-                if (response.ok) {
-                    const data = await response.json();
-                    setOtp(data.subject);
-                } else {
-                    throw new Error("otp fetch failed");
-                }
-            } catch (error) {
-                console.log(error.message);
-            }
-        };
+
         fetchLogins();
-        fetchOTP();
         return () => clearTimeout(timeOut);
     }, []);
 
@@ -72,10 +50,6 @@ const Logins = () => {
             <AuthRedirect/>
             <div class="container">
                 <div className="login-list-container">
-                    <h2>GPT One Time Password</h2>
-                    <div className="login-item">
-                        { otp }
-                    </div>
                     <h2>Logins</h2>
 
                     {loading && <p>Loading...</p>}

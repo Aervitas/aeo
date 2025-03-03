@@ -13,16 +13,16 @@ const LoginPage = () => {
     const [errorMessage, setErrorMessage] = React.useState('');
     const [fadeOut, setFadeOut] = React.useState(false);
     const navigate = useNavigate();
-    const { login, token } = useAuth();
+    const { login, authToken } = useAuth();
 
     React.useEffect(() => {
-        if (token) {
+        if (authToken) {
             const checkAuth = async () => {
                 const response = await fetch('http://localhost:8000/api/checkAuth/', {
-                    method: 'GET',
+                    method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Token ${token}`
+                        'Authorization': `Token ${authToken}`
                     },
                 });
                 console.log(response);
@@ -36,7 +36,7 @@ const LoginPage = () => {
             checkAuth();
             console.log("pass");
         }
-    }, [token, navigate]);
+    }, [authToken, navigate]);
 
     const loginClick = async (e) => {
         e.preventDefault();

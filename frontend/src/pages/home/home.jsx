@@ -67,6 +67,7 @@ const Home = () => {
                 }}
                 allDaySlot={'true'}
                 height={'80vh'}
+                
                 events={eventList}
                 />
                 </div>

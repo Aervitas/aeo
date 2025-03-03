@@ -31,35 +31,4 @@
     align-items: center;    /* center it if you want */
     width: 100%;           /* important: let it fill the container */
     padding: 10px;
-    overflow-x: auto;
-    font-size: 1rem;
-  }
-
-  .fc .fc-toolbar .fc-button {
-    font-size: 1rem; /* e.g., 16px */
-  }
-  
-  .fc .fc-toolbar-title {
-    font-size: 1.25rem; /* e.g., 20px */
-  }
-
-  @media (max-width: 600px) {
-    .fc .fc-toolbar .fc-button {
-      font-size: 0.9rem; 
-    }
-    
-    .fc .fc-toolbar-title {
-      font-size: 1rem; 
-    }
-  }
-  
-  /* Even smaller screens */
-  @media (max-width: 400px) {
-    .fc .fc-toolbar .fc-button {
-      font-size: 0.8rem; 
-    }
-    
-    .fc .fc-toolbar-title {
-      font-size: 1.2rem;
-    }
   }

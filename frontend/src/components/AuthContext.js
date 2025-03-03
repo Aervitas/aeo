@@ -14,14 +14,15 @@ export const AuthProvider = ({ children }) => {
 
 
     const login = (token) => {
+        console.log("logging in with", token);
         setToken(token);
         localStorage.setItem('token', token);
     };
 
-    const logout = () => {
-        setToken(null);
-        localStorage.removeItem('token');
-    };
+const logout = () => {
+    setToken(null);
+    localStorage.removeItem('token');
+};
 
 const value = {
     token,
