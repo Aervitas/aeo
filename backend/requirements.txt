@@ -1,0 +1,5 @@
+Django==5.1.6
+djangorestframework==3.15.2
+google_api_python_client==2.162.0
+protobuf==6.30.0
+python-dotenv==1.0.1

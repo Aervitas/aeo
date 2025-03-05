@@ -1,17 +1,18 @@
 import React from 'react';
-import {Link, NavLink, useLocation, useNavigate} from 'react-router-dom';
+import {NavLink, useLocation, useNavigate} from 'react-router-dom';
 import { useAuth } from '../AuthContext'
 import './HeaderBar.css';
 
 export const HeaderBar = () => {  
     
     const location = useLocation();
+    const [menuActive, setMenuActive] = React.useState(false);
     const navigate = useNavigate();
     const { logout } = useAuth();
 
-    if (location.pathname === "/login ") {
-        return null;
-    }
+    const toggleMenu = () => {
+        setMenuActive(!menuActive);
+      };
 
     const handleLogout = () => {
         logout();
@@ -19,9 +20,15 @@ export const HeaderBar = () => {
         
     }
 
+    if (location.pathname === "/login") {
+        return null;
+    }
+
     return (
+        
         <nav>
-            <ul>
+            <button class="hamburger" onClick={toggleMenu} id="hamburger">&#9776;</button>
+            <ul className={menuActive ? 'active' : ''}>
             <li>
                 <NavLink to="/home">Home</NavLink>
             </li>
@@ -34,10 +41,11 @@ export const HeaderBar = () => {
             <li>
                 <NavLink to="/polls">Polls</NavLink>
             </li>
-            <li onClick={handleLogout}>
-                <NavLink to="/" className='logout'>Log Out</NavLink>
+            <li>
+                <NavLink to="/account">Account</NavLink>
             </li>
         </ul>
     </nav>
+    
     );
 }

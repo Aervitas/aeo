@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from logins.views import LoginView, CheckTokenView, CalendarEventList, BrotherLoginsView, getOTPView
+from logins.views import LoginView, CheckTokenView, CalendarEventList, BrotherLoginsView, getOTPView, changePasswordView
 from logins.admin import adminDash
 
 
@@ -27,6 +27,7 @@ urlpatterns = [
     path('api/events/', CalendarEventList.as_view(), name='calendarEvents'),
     path('api/brotherLogins/', BrotherLoginsView.as_view(), name='brotherLogins'),
     path('api/login/getOTP', getOTPView.as_view(), name='getOTP'),
+    path('api/login/changePassword', changePasswordView.as_view(), name='changePassword'),
 ]
 
 # admin.site.index_title = "Officer Dashboard"

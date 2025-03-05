@@ -24,6 +24,7 @@ const AuthRedirect = () => {
             console.log(response);
             if (response.ok) {
                 console.log('Authorized!');
+                localStorage.setItem('name', response.name);
             }
             else {
                 console.log('Not Authorized');

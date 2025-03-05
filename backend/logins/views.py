@@ -12,16 +12,17 @@ from googleapiclient.discovery import build
 from google.oauth2.credentials import Credentials
 from dotenv import load_dotenv
 from .utils import get_gmail_token, update_gmail_token
-
+from django.contrib.auth.models import User
 
 class LoginView(APIView):
     permission_classes = [AllowAny]
     def post(self, request):
         # Retrieve the username and password from the request data
+        
+
         username = request.data.get('username')
         password = request.data.get('password')
         
-
         # Authenticate the user
         user = authenticate(request, username=username, password=password)
         if user is not None:
@@ -34,10 +35,10 @@ class LoginView(APIView):
 
 class CheckTokenView(APIView):
     permission_classes = [IsAuthenticated]
-
     def get(self, request, format=None):
         return Response({
-            'status': 'Token is valid'
+            'status': 'Token is valid',
+            'name': request.user.first_name,
         })
 
 class CalendarEventList(APIView):
@@ -75,8 +76,12 @@ class getOTPView(APIView):
         client_id = os.environ.get("GMAIL_CLIENT_ID")
         client_secret = os.environ.get("GMAIL_CLIENT_SECRET")
         
-        print(refresh_token)
-        print(access_token)
+        print("Access token:", access_token)
+        print("Refresh token:", refresh_token)
+        print("Token URI:", token_uri)
+        print("Client ID:", client_id)
+        print("Client Secret:", client_secret)
+
 
         creds = Credentials(
             token=access_token,
@@ -124,3 +129,17 @@ class getOTPView(APIView):
         
         except Exception as e:
             return Response({'error': str(e)}, status=500)
+        
+class changePasswordView(APIView):
+    permission_classes = [IsAuthenticated]
+    
+    def post(self, request):
+        
+        user = request.user
+        newPassword = request.data.get('newPassword')
+        oldPassword = request.data.get('oldPassword')
+        if not user.check_password(oldPassword):
+            return Response({'status': 'Incorrect Password'}, status=403)
+        user.set_password(newPassword)
+        user.save()
+        return Response({'status': 'Password changed successfully'}, status=200)

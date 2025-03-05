@@ -3,7 +3,7 @@
 from django.contrib.admin import AdminSite
 from django.contrib import admin
 from django.contrib.auth.models import User, Group
-from .models import login, CalendarEvent, Poll, Choice
+from .models import login, CalendarEvent, Poll, Choice, GmailToken
 
 class LoginsAdminSite(AdminSite):
     site_header = 'Logins Administration'
@@ -28,3 +28,4 @@ adminDash.register(login)
 adminDash.register(CalendarEvent)
 adminDash.register(Poll, PollAdmin)
 adminDash.register(Choice)
+adminDash.register(GmailToken)

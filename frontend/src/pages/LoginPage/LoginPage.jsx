@@ -68,11 +68,13 @@ const LoginPage = () => {
         <div className={`wrapper ${fadeOut ? 'fade-out-hidden' : 'fade-out'}`}>
             <form onSubmit={loginClick}>
                 <h1>Brother Database</h1>
-                <div className='input-field'>
+                <div className='input-field-login' >
+                    
                     <input type="text" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} required/>
                     <FaUserAlt className = 'icon'/>
                 </div>
-                <div className='input-field'>
+                <div className='input-field-login'>
+                    
                     <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} required/>
                     <RiLockPasswordFill className = 'icon'/>
                 </div>

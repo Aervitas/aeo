@@ -26,42 +26,71 @@
   }
   
   .cal {
-    display: block;
-    flex-direction: column; /* so the calendar can stack below any other elements if needed */
-    align-items: center;    /* center it if you want */
-    width: 100%;           /* important: let it fill the container */
-    padding: 10px;
-    overflow-x: auto;
-    font-size: 1rem;
+    padding: 5px;
+    font-size: 0.9rem;
+  }
+/* Base styles for FullCalendar */
+.fc {
+  /* Ensure the calendar fills its container */
+  width: 100%;
+ 
+}
+
+/* Toolbar button and title styling (already defined, with slight adjustments) */
+.fc .fc-toolbar .fc-button {
+  font-size: 1rem; /* default for larger screens */
+  padding: 0.5em 1em;
+  width: 100%
+}
+.fc .fc-toolbar-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* Mobile adjustments for screens up to 600px wide */
+@media (max-width: 600px) {
+
+  .homewrapper {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .container {
+    width: 100%;
+    height: 100%;
   }
 
   .fc .fc-toolbar .fc-button {
-    font-size: 1rem; /* e.g., 16px */
-    
+    font-size: 0.9rem;
+    padding: 0.4em 0.8em; /* reduce padding */
   }
   
   .fc .fc-toolbar-title {
-    font-size: 1.25rem; /* e.g., 20px */
-  }
-
-  @media (max-width: 600px) {
-    .fc .fc-toolbar .fc-button {
-      font-size: 0.9rem; 
-    }
-    
-    .fc .fc-toolbar-title {
-      font-size: 1rem; 
-    }
+    font-size: 1rem;
   }
   
-  /* Even smaller screens */
-  @media (max-width: 400px) {
-    .fc .fc-toolbar .fc-button {
-      font-size: 0.8rem; 
-      
-    }
-    
-    .fc .fc-toolbar-title {
-      font-size: 1.2rem;
-    }
+  /* Adjust calendar container padding and margins */
+  .cal {
+    padding: 5px;
+    font-size: 0.9rem;
   }
+}
+
+/* Even smaller screens (e.g., up to 400px wide) */
+@media (max-width: 400px) {
+  .fc .fc-toolbar .fc-button {
+    font-size: 0.5rem;
+    padding: 0.3em 0.6em;
+  }
+
+
+
+  .fc .fc-toolbar-title {
+    font-size: 0.9rem;
+  }
+  
+  .cal {
+    padding: 3px;
+    font-size: 0.8rem;
+  }
+}

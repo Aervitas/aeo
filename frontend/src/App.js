@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate} from "react-router-do
 import { AuthProvider, useAuth } from './components/AuthContext';
 import {HeaderBar} from './components/HeaderBar/HeaderBar';
 import Logins from './pages/logins/logins';
+import Account from './pages/account/account';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
 
               <Route exact path="/home" element={<Home />} />   
               <Route exact path="/brotherLogins" element={<Logins />} />
+              <Route exact path="/account" element={<Account />} />
             </Routes>
           </div>
         </div>

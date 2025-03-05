@@ -1,5 +1,3 @@
-
-
 .wrapper {
     background: rgba(140, 0, 255, .85);
     color: #ffffff;
@@ -9,9 +7,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40vw;
-    max-width: 400px;
-    height: auto;
+    min-height: 480px;
+    width: 50vw;
+    height: 50vh;
+    
 }
 
 .wrapper h1 {
@@ -19,38 +18,47 @@
     text-align: center;
 }
 
-.wrapper .input-field {
+.wrapper .input-field-login {
+    text-align: center;
+    margin: 30px 0;
+    
+}
+
+.wrapper .input-field-login {
     position: relative;
-    width: 100%;
-    height: 50px;
+    text-align: center;
     margin: 30px 0;
 }
 
-.input-field input {
+.input-field-login input {
+    text-align: center;
     width: 100%;
     height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
     border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 40px;
-    color: #ffffff;
+    color: #000000;
+    font-size: 18px;
     padding: 20px 45px 20px 20px;
+    box-sizing: border-box;
+}
+
+
+.input-field-login input::placeholder {
+    color: #c08888;
     font-size: 18px;
 }
 
-.input-field input::placeholder {
-    color: #ffffff;
-    font-size: 1rem;
+.input-field-login .icon {
+    position: absolute;  /* Position absolutely within the container */
+    right: 20px;         /* 20px from the right edge */
+    top: 50%;            /* Vertically centered */
+    transform: translateY(-50%);
+    color: #000000;
+    font-size: 26px;
 }
 
-.input-field .icon {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1rem;
-}
+
+
 
 .wrapper .remember {
     display: flex;
@@ -106,31 +114,29 @@
     text-align: center;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 600px) {
     .wrapper {
-        background: rgba(140, 0, 255, .85);
-        color: #ffffff;
-        border-radius: 10px;
-        padding: 10px 10px;
-        display:flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 80vh;
+        width: 100vw;
+        height: 120vh;
+        transform: translateY(-15vh);
     }
+
+    .input-field-login input::placeholder {
+        color: #c08888;
+        font-size: 14px;
+    }
+
+  }
   
-    .wrapper h1 {
-      font-size: 28px;
+  @media (max-height: 600px) {
+    .wrapper {
+        width: 100vw;
+        height: 120vh;
+        transform: translateY(-15vh);
     }
-  
-    .input-field input {
-      font-size: 16px;
-      padding: 15px 40px 15px 15px;
+
+    .input-field-login input::placeholder {
+        color: #c08888;
+        font-size: 14px;
     }
-  
-    .wrapper button {
-      height: 40px;
-      font-size: 14px;
-    }
-}
+  }

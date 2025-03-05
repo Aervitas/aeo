@@ -41,4 +41,4 @@ class GmailToken(models.Model):
     refresh_token = models.CharField(max_length=512)
 
     def __str__(self):
-        return f"GmailToken for Client: {self.client_id}"
+        return f"GmailToken for Client: {self.access_token}"

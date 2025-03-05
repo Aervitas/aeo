@@ -86,7 +86,7 @@ const Logins = () => {
                             <div key={login.id} className="login-item">
                                 <h3>{login.title}</h3>
                                 <p><strong>Username:</strong> {login.username}</p>
-                                <p><strong>Email:</strong> {login.email}</p>
+                                {login.email && <p><strong>Email:</strong> {login.email}</p>}
                                 <p><strong>Password:</strong> {login.password}</p>
                             </div>
                         ))}
