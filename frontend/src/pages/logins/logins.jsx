@@ -18,7 +18,7 @@ const Logins = () => {
         const fetchLogins = async () => {
             const token = localStorage.getItem('token');
             try{
-                const response = await fetch("http://localhost:8000/api/brotherLogins/", {
+                const response = await fetch("https://backend.aeoucla.com/api/brotherLogins/", {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -41,7 +41,7 @@ const Logins = () => {
         const fetchOTP = async() => {
             const token = localStorage.getItem('token');
             try {
-                const response = await fetch("http://localhost:8000/api/login/getOTP", {
+                const response = await fetch("https://backend.aeoucla.com/api/login/getOTP", {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -74,7 +74,7 @@ const Logins = () => {
                 <div className="login-list-container">
                     <h2>GPT One Time Password</h2>
                     <div className="login-item">
-                        { otp }
+                        <h3>{otp}</h3>
                     </div>
                     <h2>Logins</h2>
 

@@ -21,6 +21,7 @@
     width: 50vw;
     height: 50vh;
     min-height: 600px;
+    min-width: 320px;
 }
 
   
@@ -31,18 +32,19 @@
 
 .input-field input {
     text-align: center;
-    width: 100%;
+    width: 80%;
     height: 100%;
     border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 40px;
-    color: #ffffff;
+    color: #030303;
     font-size: 18px;
     padding: 20px 45px 20px 20px;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 
 .input-field input::placeholder {
-    color: #c08888;
+    color: #4e4040;
     font-size: 18px;
 }
 
@@ -65,7 +67,7 @@
     
   }
   .account-wrapper button {
-    width: 100%;
+    width: 70%;
     height: 45px;
     background: #ffffff;
     border: none;
@@ -76,10 +78,12 @@
     font-size: 16px;
     color: #333;
     font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 } 
   .sign-out {
     display: inline-block;
-    width: 80%;
+    width: 60%;
     border: 2px solid red;
     border-radius: 8px;
     background-color: transparent;
@@ -88,6 +92,7 @@
     text-align: center;
     margin: 1rem auto;
     box-sizing: border-box;
+    bottom: 0;
     cursor: pointer;
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s; /* Smooth transition */
@@ -99,14 +104,18 @@
   }
   
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     .account-wrapper {
         width: 100vw;
         height: 100vh;
     }
 
+    .input-field input {
+      width: 100%;
+    }
+
     .input-field input::placeholder {
-        color: #c08888;
+
         font-size: 14px;
     }
 
@@ -119,8 +128,12 @@
     }
 
     .input-field input::placeholder {
-        color: #c08888;
+
         font-size: 14px;
+    }
+
+    .input-field input {
+      width: 100%;
     }
   }
 

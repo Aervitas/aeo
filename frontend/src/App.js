@@ -8,6 +8,7 @@ import { AuthProvider, useAuth } from './components/AuthContext';
 import {HeaderBar} from './components/HeaderBar/HeaderBar';
 import Logins from './pages/logins/logins';
 import Account from './pages/account/account';
+import Links from './pages/links/links';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
               <Route exact path="/home" element={<Home />} />   
               <Route exact path="/brotherLogins" element={<Logins />} />
               <Route exact path="/account" element={<Account />} />
+              <Route exact path="/links" element={<Links />} />
             </Routes>
           </div>
         </div>

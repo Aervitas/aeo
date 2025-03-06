@@ -42,6 +42,9 @@ export const HeaderBar = () => {
                 <NavLink to="/polls">Polls</NavLink>
             </li>
             <li>
+                <NavLink to="/links">Links</NavLink>
+            </li>
+            <li>
                 <NavLink to="/account">Account</NavLink>
             </li>
         </ul>

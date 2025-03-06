@@ -14,7 +14,7 @@ const AuthRedirect = () => {
         }
         const checkAuth = async () => {
 
-            const response = await fetch('http://localhost:8000/api/checkAuth/', {
+            const response = await fetch('https://backend.aeoucla.com/api/checkAuth/', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

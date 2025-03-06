@@ -18,7 +18,7 @@ const LoginPage = () => {
     React.useEffect(() => {
         if (token) {
             const checkAuth = async () => {
-                const response = await fetch('http://localhost:8000/api/checkAuth/', {
+                const response = await fetch('https://backend.aeoucla.com/api/checkAuth/', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ const LoginPage = () => {
     const loginClick = async (e) => {
         e.preventDefault();
         const rememberMe = document.getElementById('rememberMe');
-        const response = await fetch('http://localhost:8000/api/login/', {
+        const response = await fetch('https://backend.aeoucla.com/api/login/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

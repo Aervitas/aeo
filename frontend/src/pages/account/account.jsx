@@ -35,7 +35,7 @@ const Account = () => {
             return;
         }
         try {
-            const response = await fetch('http://localhost:8000/api/login/changePassword', {
+            const response = await fetch('https://backend.aeoucla.com/api/login/changePassword', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
