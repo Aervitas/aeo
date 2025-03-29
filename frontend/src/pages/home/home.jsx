@@ -57,18 +57,7 @@ const Home = () => {
             <AuthRedirect/>
             <div class="container">
                 <div class="cal">
-                <Fullcalendar
-                plugins={[dayGridPlugin, timeGridPlugin]}
-                initialView={"dayGridMonth"}
-                headerToolbar = {{
-                    start: 'today prev,next',
-                    center: 'title',
-                    end: "dayGridMonth,timeGridWeek,timeGridDay",
-                }}
-                allDaySlot={'true'}
-                height={'80vh'}
-                events={eventList}
-                />
+                <iframe src="https://calendar.google.com/calendar/embed?src=aeobruin%40gmail.com&ctz=America%2FLos_Angeles" style={{border: 0}} width="800" height="600" frameborder="0" scrolling="no"></iframe>
                 </div>
             </div>
 
