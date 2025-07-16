@@ -1,96 +1,95 @@
 
 .fade-in {
-    opacity: 0;                /* Start hidden */
-    transition: opacity 1s ease-in; /* Transition for 0.5 seconds */
-  }
-  
-  .fade-in-visible {
-    opacity: 1;                /* Fade in to fully visible */
-    transition: opacity 1s ease-in;
-  }
+  opacity: 0;                /* Start hidden */
+  transition: opacity 1s ease-in; /* Transition for 0.5 seconds */
+}
+
+.fade-in-visible {
+  opacity: 1;                /* Fade in to fully visible */
+  transition: opacity 1s ease-in;
+}
 
 
-  .homewrapper {
-    width: 90%;
-    background: rgba(140, 0, 255, .85);
-    color: #ffffff;
-    border-radius: 10px;
-    padding: 30px 40px;
-  }
+.homewrapper {
+  width: 90%;
+  background: rgba(140, 0, 255, .85);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 30px 40px;
   
-  .container {
-    display: flex;
-    flex-direction: row; /* or column */
-    justify-content: center;
-    width: 100%;
-  }
-  
-  .cal {
-    padding: 5px;
-    font-size: 0.9rem;
-  }
-/* Base styles for FullCalendar */
-.fc {
-  /* Ensure the calendar fills its container */
+}
+
+.container {
+  display: flex;
+  flex-direction: row; /* or column */
+  justify-content: center;
   width: 100%;
- 
 }
 
-/* Toolbar button and title styling (already defined, with slight adjustments) */
+.cal {
+  display: block;
+  flex-direction: column; /* so the calendar can stack below any other elements if needed */
+  align-items: center;    /* center it if you want */
+  width: 100%;           /* important: let it fill the container */
+  padding: 10px;
+  overflow-x: auto;
+  font-size: 1rem;
+  position: 'relative';
+  padding-bottom: 75%;
+  overflow: 'hidden';
+  
+}
+
+.gcal {
+  height: 60vh;
+  width: 100%;
+}
+
 .fc .fc-toolbar .fc-button {
-  font-size: 1rem; /* default for larger screens */
-  padding: 0.5em 1em;
-  width: 100%
+  font-size: 1rem; /* e.g., 16px */
+  
 }
+
 .fc .fc-toolbar-title {
-  font-size: 1.25rem;
-  font-weight: bold;
+  font-size: 1.25rem; /* e.g., 20px */
 }
 
-/* Mobile adjustments for screens up to 600px wide */
 @media (max-width: 600px) {
-
-  .homewrapper {
-    width: 100vw;
-    height: 100vh;
-  }
-
-  .container {
-    width: 100%;
-    height: 100%;
-  }
-
   .fc .fc-toolbar .fc-button {
-    font-size: 0.9rem;
-    padding: 0.4em 0.8em; /* reduce padding */
+    font-size: 0.9rem; 
   }
   
   .fc .fc-toolbar-title {
-    font-size: 1rem;
+    font-size: 1rem; 
   }
-  
-  /* Adjust calendar container padding and margins */
-  .cal {
-    padding: 5px;
-    font-size: 0.9rem;
+
+  .gcal {
+    height: 100vh;
+    width: 400px;
   }
+
+  .homewrapper {
+    min-width: 100%;
+    min-height: 100%;
+    border-radius: 0;
+    padding: 0;
+  }
+
 }
 
-/* Even smaller screens (e.g., up to 400px wide) */
+/* Even smaller screens */
 @media (max-width: 400px) {
   .fc .fc-toolbar .fc-button {
-    font-size: 0.5rem;
-    padding: 0.3em 0.6em;
-  }
-
-
-
-  .fc .fc-toolbar-title {
-    font-size: 0.9rem;
+    font-size: 0.8rem; 
+    
   }
   
-  .cal {
-    padding: 3px;
-    font-size: 0.8rem;
+  .fc .fc-toolbar-title {
+    font-size: 1.2rem;
+  }
+
+  .gcal {
+
+    width: 100%;
   }
 }
